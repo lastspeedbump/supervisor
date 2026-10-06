@@ -109,3 +109,7 @@ Tracker commands are kept in one file, [`skills/supervise/references/trackers.md
 - **Not a code review.** It checks whether claims hold, not whether the design is good.
 - **Not a merge bot.** Nothing here merges a PR or pushes to `main`.
 - **Not autonomous.** Every action visible outside a session waits for your approval.
+
+## License
+
+[MIT](LICENSE)
