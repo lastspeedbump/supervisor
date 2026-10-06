@@ -86,17 +86,21 @@ Nothing is written inside your repositories. Several supervisors can run in one 
 
 Requirements: git (with worktrees), bash for the mail watcher (Git Bash on Windows), Claude Code, an issue tracker the agent can read (GitHub through the [`gh` CLI](https://cli.github.com/) is built in), and you, launching each stream session by hand.
 
-Copy the skill folders into your personal skills directory:
+From a clone of this repo, copy the skill folders into your personal skills directory. The commands create the directory first, because copying several folders to a destination that doesn't exist yet goes wrong in both shells.
+
+macOS, Linux or Git Bash:
 
 ```bash
-cp -r skills/supervise* ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -r skills/supervise* ~/.claude/skills/
 ```
 
-On Windows (PowerShell):
+Windows (PowerShell):
 
 ```powershell
-Copy-Item -Recurse skills\supervise* $HOME\.claude\skills\
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null; Get-ChildItem skills -Directory -Filter 'supervise*' | Copy-Item -Destination "$HOME\.claude\skills" -Recurse -Force
 ```
+
+You should end up with nine folders: `~/.claude/skills/supervise`, `~/.claude/skills/supervise-check-mail` and so on. Run the same command again to update after pulling changes.
 
 Each skill is a `SKILL.md` file, with shared reference files in `supervise/references/` and the mail watcher in `supervise/scripts/`. There's nothing to build.
 
