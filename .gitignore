@@ -1,0 +1,3 @@
+# Real repo profiles describe private repos and stay on the local machine.
+skills/supervise/profiles/*
+!skills/supervise/profiles/example.md
